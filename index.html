@@ -1,35 +1,140 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Birthday Samko!!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Card</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Basic layout so things actually show properly */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #fdf2f8;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background: #ffb7d5;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Slideshow */
+    .slideshow-container {
+      position: relative;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+
+    #slideImage {
+      width: 100%;
+      border-radius: 12px;
+      transition: opacity .3s ease;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 12px;
+      color: white;
+      background: rgba(0,0,0,0.4);
+      font-size: 18px;
+      border-radius: 4px;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .dots {
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 4px;
+      display: inline-block;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: #ff4d8a;
+    }
+
+    /* Buttons */
+    .controls {
+      margin-top: 25px;
+    }
+
+    button {
+      margin: 8px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      background: #ff4d8a;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e33870;
+    }
+
+    #surprise.revealed {
+      background: gold;
+      color: black;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 25px;
+      padding: 10px;
+    }
+
+    a {
+      color: #ff4d8a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
 </head>
+
 <body>
-  <main class="card">
 
-    <!-- FIXED HERO IMAGE -->
-    <img class="hero" src="assets/images/photo01.jpg" alt="Birthday photo of Sam">
+<header>💖 Happy Birthday! 💖</header>
 
-    <h1 class="title">Happy Birthday Samko!</h1>
-    <p class="message">Click the heart to reveal a surprise and press play for some amazing music 🎵</p>
+<!-- 🔊 Background music -->
+<audio id="bgm" src="assets/music/birthday-mix.mp3"></audio>
 
-    <div class="controls">
-      <button id="playBtn" class="btn">Play Music</button>
-      <button id="confettiBtn" class="btn">Celebrate 🎉</button>
-    </div>
+<div class="controls">
+  <button id="playBtn">Play Music</button>
+  <button id="confettiBtn">Celebrate 🎉</button>
+  <button id="surprise">💝 Heart Surprise</button>
+</div>
 
-    <button id="surprise" class="heart" aria-label="Reveal surprise">❤</button>
-  </main>
+<!-- 📸 Slideshow -->
+<div class="slideshow-container">
+  <img id="slideImage" src="" alt="Slideshow Image">
 
-  <!-- FIXED AUDIO FILE -->
-  <audio id="bgm" src="assets/audio/music-mashup.mp3" loop preload="none"></audio>
+  <div class="prev">⟨</div>
+  <div class="next">⟩</div>
+</div>
 
-  <script src="assets/js/main.js"></script>
+<div id="dots" class="dots"></div>
+
+<footer>
+  <a href="gallery.html">Go to Gallery Page →</a>
+</footer>
+
+<script src="main.js"></script>
 </body>
 </html>
