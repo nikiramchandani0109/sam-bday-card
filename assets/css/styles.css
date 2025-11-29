@@ -1,0 +1,80 @@
+:root{
+  --bg:#fff8f0;
+  --accent:#ff6b6b;
+  --text:#2b2b2b;
+  --card-bg: rgba(255,255,255,0.85);
+}
+*{box-sizing:border-box}
+body{
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,#fff,#ffeedd);
+  color:var(--text);
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+.card{
+  width:100%;
+  max-width:720px;
+  background:var(--card-bg);
+  border-radius:18px;
+  padding:2rem;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+  position:relative;
+}
+.hero{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid white;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  margin:0 auto 1rem;
+}
+.title{
+  font-family:"Great Vibes", cursive;
+  font-size:3rem;
+  margin:0.2rem 0 0.4rem;
+  color:var(--accent);
+}
+.message{margin:0 0 1rem}
+.controls{display:flex;gap:0.5rem;justify-content:center;margin-bottom:1rem}
+.btn{
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:0.6rem 1rem;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 6px 12px rgba(255,107,107,0.2);
+}
+.heart{
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  width:64px;height:64px;
+  border-radius:50%;
+  border:0;
+  background:linear-gradient(180deg,#fff,#ffd6d6);
+  font-size:1.6rem;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+.revealed{
+  animation:pop 600ms ease;
+}
+@keyframes pop{
+  0%{transform:scale(0.7);opacity:0}
+  60%{transform:scale(1.05);opacity:1}
+  100%{transform:scale(1)}
+}
+/* small screen tweaks */
+@media (max-width:420px){
+  .title{font-size:2rem}
+  .hero{width:120px;height:120px}
+}
