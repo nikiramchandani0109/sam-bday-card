@@ -9,16 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const dotsContainer = document.getElementById('dots');
+  const surpriseMessage = document.getElementById('surpriseMessage');
 
   if(!slideImage){ console.error("Missing #slideImage"); return; }
 
-  // --- Slideshow config ---
+  // --- Slideshow ---
   const numImages = 39;
   const folder = 'assets/images/';
   const prefix = 'photo';
   const ext = '.jpg';
   const zeroPad = n => n.toString().padStart(2,'0');
-
   const slides = [];
   for(let i=1;i<=numImages;i++){
       slides.push(`${folder}${prefix}${zeroPad(i)}${ext}`);
@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let current = 0;
   let slideInterval = null;
 
-  // --- Slideshow functions ---
   function showSlide(n){
     current = (n + slides.length) % slides.length;
     slideImage.style.opacity = 0;
@@ -40,12 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function nextSlide(){ showSlide(current+1); }
   function prevSlide(){ showSlide(current-1); }
-
   function startAuto(){ stopAuto(); slideInterval = setInterval(nextSlide, 5000); }
   function stopAuto(){ if(slideInterval) clearInterval(slideInterval); slideInterval=null; }
   function resetAuto(){ stopAuto(); startAuto(); }
 
-  // --- Dots ---
   function createDots(){
     if(!dotsContainer) return;
     dotsContainer.innerHTML = '';
@@ -65,10 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     dots.forEach((dot, idx)=> dot.classList.toggle('active', idx===current));
   }
 
-  // --- Preload images ---
   slides.forEach(src => { const img = new Image(); img.src = src; });
 
-  // --- Event listeners ---
   if(nextBtn) nextBtn.addEventListener('click',()=>{ nextSlide(); resetAuto(); });
   if(prevBtn) prevBtn.addEventListener('click',()=>{ prevSlide(); resetAuto(); });
 
@@ -115,11 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Heart surprise ---
-  if(surpriseBtn){
+  if(surpriseBtn && surpriseMessage){
     surpriseBtn.addEventListener('click', ()=>{
       surpriseBtn.classList.add('revealed');
-      surpriseBtn.disabled=true;
-      setTimeout(()=> alert("Surprise! Wishing you the happiest birthday 🎂💖"),250);
+      surpriseBtn.disabled = true;
+      surpriseMessage.textContent = `Surprise! I hope your eyes widened as much as they could and I hope you like this super basic website that was supposed to be easy but took me way too long to make. But I had this idea a few months ago after goin on tiktok and seeing people do this for their long distance POOKIE and I wanted to try it out, and who better deserves this investment of time (and skipping dinner) other than you! I hope you try to enjoy your birthday even though I'm not there, and make sure you eat extra cake for me! I don't know how much text I can fit here but I won't make it too emotional haha, I already sent u an emotional essay when I left Waterloo in June. Anyways, enjoy your birthday unc, I love you soooooo much, and I miss you way too much to put into words. Here's to many more years of Samko blessing this planet (and my life) with her art, her nonstop yap about 2D/3D (Korean) men, anime, and a lifetime of friendship between us. Love u pookie ❤️`;
     });
   }
 
