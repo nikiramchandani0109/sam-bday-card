@@ -8,7 +8,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- CSS -->
+<!-- Optional custom CSS -->
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -73,8 +73,10 @@ button:hover {
     padding: 12px;
     color: white;
     background: rgba(0,0,0,0.4);
-    font-size: 18px;
+    font-size: 24px;
     border-radius: 6px;
+    user-select: none;
+    z-index: 10;
 }
 
 .prev { left: 10px; }
@@ -111,7 +113,6 @@ a {
 }
 </style>
 </head>
-
 <body>
 
 <header>💖 Happy Birthday Samko! 💖</header>
@@ -126,8 +127,8 @@ a {
 <!-- Slideshow -->
 <div class="slideshow-container">
     <img id="slideImage" src="assets/images/photo01.jpg" alt="Slideshow Image">
-    <div class="prev">⟨</div>
-    <div class="next">⟩</div>
+    <div class="prev" id="prevBtn">⟨</div>
+    <div class="next" id="nextBtn">⟩</div>
 </div>
 <div id="dots" class="dots"></div>
 
